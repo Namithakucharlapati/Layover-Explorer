@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Turn your layover into a mini adventure with Layover Explorer.">
+  <title>Layover Explorer — Make the most of your stop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#" aria-label="Layover Explorer home"><span class="brand-mark">✳</span><span>layover<span class="brand-light">explorer</span></span></a>
+    <nav><a href="#how-it-works">How it works</a><a href="#destinations">Destinations</a><a href="#planner" class="nav-cta">Plan my layover <span>↗</span></a></nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> A LITTLE TIME BETWEEN PLANS</div>
+        <h1>Got a few hours?<br><em>Go see a little.</em></h1>
+        <p class="hero-description">A long wait doesn’t have to mean sitting around. Tell us when you need to be back, what you feel like doing, and we’ll help you find a few places that might fit.</p>
+        <div class="hero-actions"><a class="button button-dark" href="#planner">Plan my layover <span>↗</span></a><a class="text-link" href="#how-it-works">See how it works <span>↓</span></a></div>
+        <div class="hero-proof"><div class="avatar-stack"><span>✈</span><span>☕</span><span>⌁</span></div><span><strong>No need to do it all.</strong><br>Just find one good place to go.</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo"></div>
+        <div class="photo-shade"></div>
+        <div class="floating-note note-top"><span class="note-icon">◷</span><span><strong>Your time, thoughtfully planned</strong><small>Explore without the rush</small></span></div>
+        <div class="destination-stamp"><span class="stamp-small">A SMALL PLAN, A GOOD STORY</span><strong>Step out.<br>Look around.<br>Come back easy.</strong><span class="stamp-arrow">↗</span></div>
+        <div class="floating-note note-bottom"><span class="map-pin">⌖</span><span><strong>India-wide airport list</strong><small>Search by city or airport code</small></span></div>
+      </div>
+      <div class="hero-bottom"><span>MADE FOR THE IN-BETWEEN</span><span class="bottom-line"></span><span>FLIGHTS · INDIA-WIDE AIRPORTS</span></div>
+    </section>
+
+    <section class="planner-section section-wrap" id="planner">
+      <div class="section-heading">
+        <div><div class="eyebrow">LET'S MAKE A PLAN</div><h2>How much time have you got?</h2><p>Start with your timing and where you need to get back to. We’ll keep the suggestions simple.</p></div>
+        <div class="step-pill"><span>01</span> YOUR JOURNEY</div>
+      </div>
+      <div class="flight-only-note"><span class="type-icon">✈</span><span><strong>Flight layovers only</strong><small>Choose your airport city, then tell us when you land and when you need to be back.</small></span></div>
+
+      <form id="plannerForm" class="planner-card">
+        <div class="form-top"><div><span class="form-number">01</span><h3>Your travel details</h3></div><span class="required-note">* Required fields</span></div>
+        <div class="form-grid">
+          <label class="field field-wide">Which airport city are you visiting? <span>*</span>
+            <input id="city" list="airportOptions" placeholder="Search a city, airport or IATA code (e.g. HYD)" autocomplete="off" required>
+            <datalist id="airportOptions"></datalist>
+            <small class="field-hint">Includes airports across India. Flight routes and frequency can vary by airport and date.</small>
+          </label>
+          <label class="field">When do you arrive? <span>*</span><div class="date-time-control"><input id="arrivalDate" type="date" aria-label="Arrival date" required><select id="arrival" class="time-select" aria-label="Arrival time" required></select></div><small class="field-hint">Use local time for the city you’re visiting.</small></label>
+          <label class="field" id="departureField">When do you need to leave? <span>*</span><div class="date-time-control"><input id="departureDate" type="date" aria-label="Departure date" required><select id="departure" class="time-select" aria-label="Departure time" required></select></div><small class="field-hint" id="departureHint">Choose your next departure date and time.</small></label>
+          <label class="field">Where are you starting from? <span>*</span>
+            <select id="startPoint" required><option value="Airport">Airport</option></select>
+          </label>
+          <label class="field">Where do you need to get back to? <span>*</span>
+            <select id="returnPoint" required><option value="Airport">Airport</option></select>
+          </label>
+          <label class="field" id="bufferField">Time to keep before departure
+            <select id="buffer"><option value="150">2.5 hours — flight buffer</option><option value="180">3 hours — extra cautious</option><option value="120">2 hours — check requirements first</option></select>
+          </label>
+          <label class="field">Transport preference
+            <select id="transport"><option value="Cab / taxi">Cab / taxi</option><option value="Public transport">Public transport</option><option value="Any convenient option">Any convenient option</option></select>
+          </label>
+        </div>
+        <div class="form-divider"></div>
+        <div class="form-top preference-top"><div><span class="form-number">02</span><h3>What sounds good right now?</h3></div><span class="optional-note">Choose as many as you like</span></div>
+        <div class="interest-grid" id="interestGrid">
+          <button type="button" class="interest active" data-interest="Scenery"><span>☼</span> Scenery</button>
+          <button type="button" class="interest active" data-interest="Chill places"><span>☕</span> Chill places</button>
+          <button type="button" class="interest" data-interest="Fun"><span>✳</span> Fun & activities</button>
+          <button type="button" class="interest" data-interest="Food"><span>♨</span> Local food</button>
+          <button type="button" class="interest" data-interest="History"><span>⌂</span> History & culture</button>
+          <button type="button" class="interest" data-interest="Shopping"><span>◇</span> Shopping</button>
+        </div>
+        <div class="form-footer"><span class="privacy-note">A heads-up: travel times here are estimates, not live traffic.</span><button class="button button-dark submit-button" type="submit">Help me make a plan <span>↗</span></button></div>
+      </form>
+    </section>
+
+    <section id="results" class="results-section section-wrap hidden" aria-live="polite">
+      <div class="results-header"><div><div class="eyebrow">YOUR MINI ADVENTURE</div><h2 id="resultTitle">Your time, well spent.</h2><p id="resultSubtitle"></p></div><button id="editPlan" class="button button-outline">Edit plan ↗</button></div>
+      <div id="timeSummary" class="time-summary"></div>
+      <div id="warningBox" class="warning-box hidden"></div>
+      <div class="results-layout"><div class="places-column"><div class="places-heading"><h3>Places picked for you</h3><span id="placeCount"></span></div><div id="placeList" class="place-list"></div></div><aside class="itinerary-panel"><div class="itinerary-panel-head"><span class="panel-icon">✳</span><div><h3>Your suggested flow</h3><p>A flexible starting point</p></div></div><div id="timeline" class="timeline"></div><div class="return-reminder"><span>↩</span><div><strong>Return on time</strong><p id="returnReminder"></p></div></div><p class="disclaimer">Sample recommendations and rough travel estimates only. Check live routes, opening hours, tickets and departure rules before leaving.</p></aside></div>
+    </section>
+
+    <section class="destinations-section" id="destinations">
+      <div class="section-wrap">
+        <div class="section-heading"><div><div class="eyebrow">A FEW HOURS, A NEW PERSPECTIVE</div><h2>Explore India, one layover at a time.</h2><p>Search the planner for an airport city anywhere in India. These four are our first cities with curated local suggestions.</p></div><span class="destination-count">INDIA-WIDE</span></div>
+        <div class="city-grid">
+          <button class="city-card city-hyd" data-city="Hyderabad"><span class="city-number">01 / TELANGANA</span><span class="city-card-bottom"><strong>Hyderabad</strong><small>Old-city charm & iconic bites ↗</small></span></button>
+          <button class="city-card city-kol" data-city="Kolkata"><span class="city-number">02 / WEST BENGAL</span><span class="city-card-bottom"><strong>Kolkata</strong><small>Culture, river views & cafés ↗</small></span></button>
+          <button class="city-card city-aga" data-city="Agartala"><span class="city-number">03 / TRIPURA</span><span class="city-card-bottom"><strong>Agartala</strong><small>Heritage & slower moments ↗</small></span></button>
+          <button class="city-card city-viz" data-city="Visakhapatnam"><span class="city-number">04 / ANDHRA PRADESH</span><span class="city-card-bottom"><strong>Visakhapatnam</strong><small>Sea air & scenic escapes ↗</small></span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-section section-wrap" id="how-it-works">
+      <div class="how-intro"><div class="eyebrow">LESS GUESSWORK, MORE GOING</div><h2>A few free hours can<br><em>still be your time.</em></h2><p>You don’t need a packed itinerary. One good meal, a short walk or a place you’ve always wanted to see can be enough—especially when you know when to head back.</p></div>
+      <div class="how-steps">
+        <article><span>01</span><div><h3>Tell us your timing</h3><p>Share your arrival, next departure and where you need to return.</p></div><span class="step-symbol">◷</span></article>
+        <article><span>02</span><div><h3>Pick your kind of adventure</h3><p>Choose food, scenery, culture, fun—or a little bit of everything.</p></div><span class="step-symbol">✳</span></article>
+        <article><span>03</span><div><h3>Explore with a buffer</h3><p>Get a simple itinerary that reserves time for transport and your return.</p></div><span class="step-symbol">↗</span></article>
+      </div>
+    </section>
+
+    <section class="closing-cta"><div class="closing-orbit">✳</div><div class="eyebrow">YOUR NEXT STOP CAN BE A STORY</div><h2>Find one good stop.<br><em>Leave room to get back.</em></h2><a class="button button-light" href="#planner">Plan your layover <span>↗</span></a></section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">✳</span><span>layover<span class="brand-light">explorer</span></span></a><span>Made for the in-between. <span class="footer-dot">●</span> A frontend learning project.</span><a href="#planner">Back to planner ↑</a></footer>
+  <script src="script.js"></script>
+</body>
+</html>
